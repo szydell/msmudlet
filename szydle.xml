@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>Szydell</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>dpl</name>
+				<script>alias_func_skrypty_inventory_bags_wdp()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^/dpl ([a-z ,0-9]+)</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>zpl</name>
+				<script>alias_func_skrypty_inventory_bags_wzp()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^/zpl ([a-z ,0-9]+)</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>show variables</name>
+				<script></script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^/test_bronie$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>/plecak</name>
+				<script></script>
+				<command>ob zalozony plecak</command>
+				<packageName></packageName>
+				<regex>^/plecak$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>/kokony</name>
+				<script>
+function kokon(ile)
+
+ilei=scripts.counted_string_to_int[ile]
+
+for i=1,ilei,1 do
+  if i == 1 then
+    send("rozerwij kokon")
+  else 
+    send("rozerwij ".. scripts.id_to_string[i].." kokon")
+  end
+  send("wez wszystko z ".. scripts.id_to_string_biernik[i] .." kokonu")
+end
+
+end -- function kokon
+
+
+kokony_trigg = tempRegexTrigger("^.*Doliczyl.s sie ([a-z]+) sztuk(|i)\\.$", [[kokon(matches[2]) ]],1)
+czysc_kokony_trigg = tempRegexTrigger("^.*Nie widzisz tu niczego takiego\\.$",killTrigger(kokony_trigg),1)
+enableTrigger(kokony_trigg)
+tempTimer(3, [[ killTrigger("]] .. kokony_trigg .. [[") ]])
+tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
+
+</script>
+				<command>policz kokony</command>
+				<packageName></packageName>
+				<regex>^/kokony$</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+</MudletPackage>
+
