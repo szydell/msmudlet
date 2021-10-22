@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE MudletPackage>
-<MudletPackage version="1.001">
+<MudletPackage version="1.002">
 	<AliasPackage>
 			<Alias isActive="yes" isFolder="no">
 				<name>dpl</name>
@@ -61,95 +61,95 @@ tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
 				<regex>^/kokony$</regex>
 			</Alias>
 	</AliasPackage>
-<KeyPackage>
-		<Key isActive="yes" isFolder="no">
-			<name>sw</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("southwest")</script>
-			<command></command>
-			<keyCode>77</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>se</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("southeast")</script>
-			<command></command>
-			<keyCode>62</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>s</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("south")</script>
-			<command></command>
-			<keyCode>60</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>n</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("north")</script>
-			<command></command>
-			<keyCode>73</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>w</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("west")</script>
-			<command></command>
-			<keyCode>74</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>e</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("east")</script>
-			<command></command>
-			<keyCode>76</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>nw</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("northwest")</script>
-			<command></command>
-			<keyCode>85</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>ne</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("northeast")</script>
-			<command></command>
-			<keyCode>79</keyCode>
-			<keyModifier>167772160</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>down</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("down")</script>
-			<command></command>
-			<keyCode>48</keyCode>
-			<keyModifier>536870912</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>up</name>
-			<packageName></packageName>
-			<script>amap:keybind_pressed("up")</script>
-			<command></command>
-			<keyCode>42</keyCode>
-			<keyModifier>536870912</keyModifier>
-		</Key>
-		<Key isActive="yes" isFolder="no">
-			<name>special</name>
-			<packageName></packageName>
-			<script>compass_click("special1")</script>
-			<command></command>
-			<keyCode>53</keyCode>
-			<keyModifier>536870912</keyModifier>
-		</Key>
+	<KeyPackage>
+			<Key isActive="yes" isFolder="no">
+				<name>sw</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("southwest")</script>
+				<command></command>
+				<keyCode>16777233</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>se</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("southeast")</script>
+				<command></command>
+				<keyCode>16777239</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>s</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("south")</script>
+				<command></command>
+				<keyCode>16777237</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>n</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("north")</script>
+				<command></command>
+				<keyCode>16777235</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>w</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("west")</script>
+				<command></command>
+				<keyCode>16777234</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>e</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("east")</script>
+				<command></command>
+				<keyCode>16777236</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>nw</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("northwest")</script>
+				<command></command>
+				<keyCode>16777232</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>ne</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("northeast")</script>
+				<command></command>
+				<keyCode>16777238</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>down</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("down")</script>
+				<command></command>
+				<keyCode>16777222</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>up</name>
+				<packageName></packageName>
+				<script>amap:keybind_pressed("up")</script>
+				<command></command>
+				<keyCode>42</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
+			<Key isActive="yes" isFolder="no">
+				<name>special</name>
+				<packageName></packageName>
+				<script>compass_click("special1")</script>
+				<command></command>
+				<keyCode>16777227</keyCode>
+				<keyModifier>536870912</keyModifier>
+			</Key>
 			<Key isActive="yes" isFolder="no">
 				<name>dpl monety</name>
 				<packageName></packageName>
