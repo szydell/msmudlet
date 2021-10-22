@@ -2,12 +2,6 @@
 <!DOCTYPE MudletPackage>
 <MudletPackage version="1.001">
 	<AliasPackage>
-		<AliasGroup isActive="yes" isFolder="yes">
-			<name>Szydell</name>
-			<script></script>
-			<command></command>
-			<packageName></packageName>
-			<regex></regex>
 			<Alias isActive="yes" isFolder="no">
 				<name>dpl</name>
 				<script>alias_func_skrypty_inventory_bags_wdp()</script>
@@ -66,15 +60,8 @@ tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
 				<packageName></packageName>
 				<regex>^/kokony$</regex>
 			</Alias>
-		</AliasGroup>
 	</AliasPackage>
 <KeyPackage>
-    <KeyGroup isActive="yes" isFolder="yes">
-      <name>Szydell</name>
-      <script></script>
-      <command></command>
-      <packageName></packageName>
-      <regex></regex>
 		<Key isActive="yes" isFolder="no">
 			<name>sw</name>
 			<packageName></packageName>
@@ -211,7 +198,6 @@ tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
 				<keyCode>68</keyCode>
 				<keyModifier>134217728</keyModifier>
 			</Key>
-    </KeyGroup>
 	</KeyPackage>
 </MudletPackage>
 
