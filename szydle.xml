@@ -69,6 +69,12 @@ tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
 		</AliasGroup>
 	</AliasPackage>
 <KeyPackage>
+    <KeyGroup isActive="yes" isFolder="yes">
+      <name>Szydell</name>
+      <script></script>
+      <command></command>
+      <packageName></packageName>
+      <regex></regex>
 		<Key isActive="yes" isFolder="no">
 			<name>sw</name>
 			<packageName></packageName>
@@ -205,6 +211,7 @@ tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
 				<keyCode>68</keyCode>
 				<keyModifier>134217728</keyModifier>
 			</Key>
+    </KeyGroup>
 	</KeyPackage>
 </MudletPackage>
 
