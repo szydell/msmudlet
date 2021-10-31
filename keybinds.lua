@@ -39,7 +39,7 @@ function scripts.utils.execute_functional()
             for k, v in pairs(sep) do
                 expandAlias(v, true)
             end
-            scripts.utils.functional_key = nil
+            scripts.utils.functional_key = "stan" 
         end
     end
 end
