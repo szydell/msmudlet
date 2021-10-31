@@ -60,6 +60,70 @@ tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
 				<packageName></packageName>
 				<regex>^/kokony$</regex>
 			</Alias>
+
+			<Alias isActive="yes" isFolder="no">
+				<name>/cial</name>
+				<script>
+function cial(ile)
+
+ilei=scripts.counted_string_to_int[ile]
+
+for i=1,ilei,1 do
+  if i == 1 then
+    send("ob cialo")
+  else 
+    send("ob ".. scripts.id_to_string[i].." cialo")
+  end
+end
+
+end -- function cial
+
+
+cial_trigg = tempRegexTrigger("^.*Doliczyl.s sie ([a-z]+) sztuk(|i)\\.$", [[cial(matches[2]) ]],1)
+czysc_cial_trigg = tempRegexTrigger("^.*Nie widzisz tu niczego takiego\\.$",killTrigger(cial_trigg),1)
+enableTrigger(cial_trigg)
+tempTimer(3, [[ killTrigger("]] .. cial_trigg .. [[") ]])
+tempTimer(3, [[ killTrigger("]] .. czysc_cial_trigg .. [[") ]])
+
+</script>
+				<command>policz ciala</command>
+				<packageName></packageName>
+				<regex>^/cial$</regex>
+			</Alias>
+
+			<Alias isActive="yes" isFolder="no">
+				<name>/zbierz</name>
+				<script>
+function zbcial(ile,co)
+
+ilei=scripts.counted_string_to_int[ile]
+
+for i=1,ilei,1 do
+  if i == 1 then
+    send("wez " ..co.. " z ciala")
+  else 
+    send("wez " ..co.. " z ".. scripts.id_to_string_biernik[i].." ciala")
+  end
+end
+
+end -- function cial
+
+co = matches[2]
+
+zbcial_trigg = tempRegexTrigger("^.*Doliczyl.s sie ([a-z]+) sztuk(|i)\\.$", [[zbcial(matches[2],co) ]],1)
+czysc_zbcial_trigg = tempRegexTrigger("^.*Nie widzisz tu niczego takiego\\.$",killTrigger(zbcial_trigg),1)
+enableTrigger(zbcial_trigg)
+tempTimer(3, [[ killTrigger("]] .. zbcial_trigg .. [[") ]])
+tempTimer(3, [[ killTrigger("]] .. czysc_zbcial_trigg .. [[") ]])
+
+</script>
+				<command>policz ciala</command>
+				<packageName></packageName>
+				<regex>^/zbierz (.*)$</regex>
+			</Alias>
+
+
+
 	</AliasPackage>
 	<KeyPackage>
 			<Key isActive="yes" isFolder="no">
@@ -182,22 +246,22 @@ tempTimer(3, [[ killTrigger("]] .. czysc_kokony_trigg .. [[") ]])
 				<keyCode>66</keyCode>
 				<keyModifier>134217728</keyModifier>
 			</Key>
-			<Key isActive="yes" isFolder="no">
-				<name>/za C</name>
-				<packageName></packageName>
-				<script></script>
-				<command>/za C</command>
-				<keyCode>67</keyCode>
-				<keyModifier>134217728</keyModifier>
-			</Key>
-			<Key isActive="yes" isFolder="no">
-				<name>/za D</name>
-				<packageName></packageName>
-				<script></script>
-				<command>/za D</command>
-				<keyCode>68</keyCode>
-				<keyModifier>134217728</keyModifier>
-			</Key>
+		<Key isActive="yes" isFolder="no">
+			<name>+ napelnij plecak</name>
+			<packageName></packageName>
+			<script>send("napelnij " .. scripts.inv["other_bag_1"])</script>
+			<command></command>
+			<keyCode>43</keyCode>
+			<keyModifier>536870912</keyModifier>
+		</Key>
+		<Key isActive="yes" isFolder="no">
+			<name>- oproznij plecak</name>
+			<packageName></packageName>
+			<script>send("oproznij " .. scripts.inv["other_bag_1"])</script>
+			<command></command>
+			<keyCode>45</keyCode>
+			<keyModifier>536870912</keyModifier>
+		</Key>
 	</KeyPackage>
 </MudletPackage>
 
