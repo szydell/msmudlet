@@ -589,7 +589,7 @@ local statki = addAreaName("statki")
 			<packageName></packageName>
 			<script>function sz_getRoomID(area,room)
 at=getAreaTable()
-rooms=getAreaRooms(at[area])
+local rooms=getAreaRooms(at[area])
 for _, id in pairs(rooms) do
   if getRoomName(id) == room then
     return id
