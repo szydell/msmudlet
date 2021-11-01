@@ -263,5 +263,392 @@ tempTimer(3, [[ killTrigger("]] .. czysc_zbcial_trigg .. [[") ]])
 			<keyModifier>536870912</keyModifier>
 		</Key>
 	</KeyPackage>
+	<ScriptPackage>
+		<Script isActive="yes" isFolder="no">
+			<name>additional_maps</name>
+			<packageName></packageName>
+			<script>
+--envcolors = getCustomEnvColorTable()
+--display(envcolors)
+-- Kowal: 201
+-- karczmy, sklepy: 295
+
+-- sterowiec
+deleteArea("sterowiec")
+local sterowiec = addAreaName("sterowiec")
+
+-- st_wejscie: Przestronny hangar.
+local st_wejscie = createRoomID()
+addRoom(st_wejscie)
+setRoomArea(st_wejscie, sterowiec)
+setRoomCoordinates(st_wejscie, 0, 0, 0)
+setRoomName(st_wejscie,"Przestronny hangar")
+
+addSpecialExit(st_wejscie,3298,"wyjscie")
+addSpecialExit(3298,st_wejscie,"sterowiec")
+
+-- Warsztat Wydzialu Awioniki Stosowanej.
+local awionika = createRoomID()
+addRoom(awionika)
+setRoomArea(awionika, sterowiec)
+setRoomCoordinates(awionika, -2, 0, 0)
+setRoomName(awionika,"Warsztat Wydzialu Awioniki Stosowanej")
+
+addSpecialExit(st_wejscie,awionika,"burta")
+addSpecialExit(awionika,st_wejscie,"drzwi")
+addCustomLine(st_wejscie, awionika, "burta", "solid line", {128, 128, 128}, false)
+
+
+
+-- Elegancki korytarz.
+local st_korytarz_1 = createRoomID()
+addRoom(st_korytarz_1)
+setRoomArea(st_korytarz_1, sterowiec)
+setRoomCoordinates(st_korytarz_1, 0, 2, 0)
+setRoomName(st_korytarz_1, "Elegancki korytarz")
+
+addSpecialExit(st_wejscie,st_korytarz_1,"dziob")
+addSpecialExit(st_korytarz_1,st_wejscie,"rufa")
+addCustomLine(st_wejscie, st_korytarz_1, "dziob", "solid line", {128, 128, 128}, false)
+
+
+-- kowal: Duszne pomieszczenie. 
+
+local kowal_sterowiec = createRoomID()
+addRoom(kowal_sterowiec)
+setRoomArea(kowal_sterowiec, sterowiec)
+setRoomCoordinates(kowal_sterowiec, -2, 2, 0)
+setRoomChar(kowal_sterowiec,"K")
+setRoomEnv(kowal_sterowiec,201)
+setRoomName(kowal_sterowiec, "Duszne pomieszczenie")
+
+addSpecialExit(kowal_sterowiec,st_korytarz_1,"wyjscie")
+addSpecialExit(st_korytarz_1,kowal_sterowiec,"drzwi")
+addCustomLine(kowal_sterowiec, st_korytarz_1, "wyjscie", "solid line", {128, 128, 128}, false)
+
+
+-- Przestronny hol.
+local st_hol_1 = createRoomID()
+addRoom(st_hol_1)
+setRoomArea(st_hol_1, sterowiec)
+setRoomCoordinates(st_hol_1, 0, 4, 0)
+setExitStub(st_hol_1, "sw", true) --drzwi: Do gabinetu maja wstep tylko Mistrz i Zastepca.
+setRoomName(st_hol_1, "Przestronny hol")
+
+addSpecialExit(st_hol_1,st_korytarz_1,"rufa")
+addSpecialExit(st_korytarz_1,st_hol_1, "dziob")
+addCustomLine(st_hol_1, st_korytarz_1, "rufa", "solid line", {128, 128, 128}, false)
+
+
+-- Mostek kapitanski.
+local st_mostek = createRoomID()
+addRoom(st_mostek)
+setRoomArea(st_mostek, sterowiec)
+setRoomCoordinates(st_mostek, 0, 6, 0)
+setRoomName(st_mostek, "Mostek kapitanski")
+
+addSpecialExit(st_mostek,st_hol_1,"rufa")
+addSpecialExit(st_hol_1, st_mostek, "dziob")
+addCustomLine(st_mostek, st_hol_1, "rufa", "solid line", {128, 128, 128}, false)
+
+
+-- Elegancka sala.
+local st_sala_1 = createRoomID()
+addRoom(st_sala_1)
+setRoomArea(st_sala_1, sterowiec)
+setRoomCoordinates(st_sala_1, -2, 4, 0)
+
+addSpecialExit(st_sala_1,st_hol_1,"wyjscie")
+addSpecialExit(st_hol_1, st_sala_1, "sala")
+addCustomLine(st_sala_1, st_hol_1, "wyjscie", "solid line", {128, 128, 128}, false)
+
+
+-- Przestronny hol.  (1p)
+local st_hol_2 = createRoomID()
+addRoom(st_hol_2)
+setRoomArea(st_hol_2, sterowiec)
+setRoomCoordinates(st_hol_2, 4, 4, 0)
+
+setExit(st_hol_1, st_hol_2,"u")
+setExit(st_hol_2, st_hol_1, "d")
+addCustomLine(st_hol_1, st_hol_2, "u", "dot line", {128, 128, 128}, false)
+
+-- Przeszklona mesa. (1p)
+local st_mesa = createRoomID()
+addRoom(st_mesa)
+setRoomArea(st_mesa, sterowiec)
+setRoomCoordinates(st_mesa, 4, 6, 0)
+
+addSpecialExit(st_mesa,st_hol_2,"rufa")
+addSpecialExit(st_hol_2, st_mesa, "dziob")
+addCustomLine(st_mesa, st_hol_2, "rufa", "solid line", {128, 128, 128}, false)
+setRoomChar(st_mesa,"🍴")
+--setRoomEnv(st_mesa,295)
+
+
+-- Przytulne pomieszczenie. (1p)
+local st_pom_1 = createRoomID()
+addRoom(st_pom_1)
+setRoomArea(st_pom_1, sterowiec)
+setRoomCoordinates(st_pom_1, 2, 6, 0)
+
+addSpecialExit(st_pom_1,st_hol_2,"wyjscie")
+addSpecialExit(st_hol_2, st_pom_1, "drzwi")
+addCustomLine(st_pom_1, st_hol_2, "wyjscie", "solid line", {128, 128, 128}, false)
+setRoomChar(st_pom_1,"📓")
+--setRoomEnv(st_pom_1,295)
+
+-- Biblioteka. (1p)
+local st_biblioteka = createRoomID()
+addRoom(st_biblioteka)
+setRoomArea(st_biblioteka, sterowiec)
+setRoomCoordinates(st_biblioteka, 6, 6, 0)
+
+addSpecialExit(st_biblioteka,st_hol_2,"wyjscie")
+addSpecialExit(st_hol_2, st_biblioteka, "biblioteka")
+addCustomLine(st_biblioteka, st_hol_2, "wyjscie", "solid line", {128, 128, 128}, false)
+setRoomChar(st_biblioteka,"📚")
+--setRoomEnv(st_biblioteka,295)
+
+-- Granatowy korytarz. (1p)
+local st_korytarz_2 = createRoomID()
+addRoom(st_korytarz_2)
+setRoomArea(st_korytarz_2, sterowiec)
+setRoomCoordinates(st_korytarz_2, 4, 2, 0)
+
+addSpecialExit(st_korytarz_2,st_hol_2,"dziob")
+addSpecialExit(st_hol_2, st_korytarz_2, "rufa")
+addCustomLine(st_korytarz_2, st_hol_2, "dziob", "solid line", {128, 128, 128}, false)
+
+-- Pokoj goscinny. (1p)
+local st_pokoj_1 = createRoomID()
+addRoom(st_pokoj_1)
+setRoomArea(st_pokoj_1, sterowiec)
+setRoomCoordinates(st_pokoj_1, 2, 2, 0)
+
+addSpecialExit(st_korytarz_2,st_pokoj_1,"drzwi")
+addSpecialExit(st_pokoj_1, st_korytarz_2, "wyjscie")
+addCustomLine(st_korytarz_2, st_pokoj_1, "drzwi", "solid line", {128, 128, 128}, false)
+
+
+-- Kotlownia. (1p)
+local st_kotlownia = createRoomID()
+addRoom(st_kotlownia)
+setRoomArea(st_kotlownia, sterowiec)
+setRoomCoordinates(st_kotlownia, 4, 0, 0)
+
+addSpecialExit(st_korytarz_2,st_kotlownia,"rufa")
+addSpecialExit(st_kotlownia, st_korytarz_2, "dziob")
+addCustomLine(st_korytarz_2, st_kotlownia, "rufa", "solid line", {128, 128, 128}, false)
+
+-- Zagracony warsztat. (1p)
+local st_warsztat = createRoomID()
+addRoom(st_warsztat)
+setRoomArea(st_warsztat, sterowiec)
+setRoomCoordinates(st_warsztat, 2, 0, 0)
+
+addSpecialExit(st_korytarz_2,st_warsztat,"warsztat")
+addSpecialExit(st_warsztat, st_korytarz_2, "wyjscie")
+addCustomLine(st_korytarz_2, st_warsztat, "warsztat", "solid line", {128, 128, 128}, false)
+addSpecialExit(st_kotlownia,st_warsztat,"drzwi")
+addSpecialExit(st_warsztat, st_kotlownia, "drzwiczki")
+addCustomLine(st_kotlownia, st_warsztat, "drzwi", "solid line", {128, 128, 128}, false)
+
+-- Przestronny korytarz. (2p)
+local st_korytarz_3 = createRoomID()
+addRoom(st_korytarz_3)
+setRoomArea(st_korytarz_3, sterowiec)
+setRoomCoordinates(st_korytarz_3, 8, 4, 0)
+
+setExit(st_korytarz_3, st_hol_2,"d")
+setExit(st_hol_2, st_korytarz_3, "u")
+addCustomLine(st_hol_2, st_korytarz_3, "u", "dot line", {128, 128, 128}, false)
+
+-- Bocianie gniazdo. (3p)
+local st_gniazdo = createRoomID()
+addRoom(st_gniazdo)
+setRoomArea(st_gniazdo, sterowiec)
+setRoomCoordinates(st_gniazdo, 10, 6, 0)
+
+setExit(st_korytarz_3, st_gniazdo,"u")
+setExit(st_gniazdo, st_korytarz_3, "d")
+addCustomLine(st_gniazdo, st_korytarz_3, "d", "dot line", {128, 128, 128}, false)
+setRoomChar(st_gniazdo,"🧘")
+
+-- Kwatery zalogi. (2p)
+local st_kwatery = createRoomID()
+addRoom(st_kwatery)
+setRoomArea(st_kwatery, sterowiec)
+setRoomCoordinates(st_kwatery, 8, 6, 0)
+setRoomName(st_kwatery,"Kwatery zalogi")
+
+addSpecialExit(st_kwatery,st_korytarz_3,"rufa")
+addSpecialExit(st_korytarz_3, st_kwatery, "dziob")
+addCustomLine(st_kwatery, st_korytarz_3, "rufa", "solid line", {128, 128, 128}, false)
+setRoomChar(st_kwatery,"🛡️")
+--setRoomEnv(st_kwatery,295)
+
+-- Magazyn. (2p)
+local st_magazyn = createRoomID()
+addRoom(st_magazyn)
+setRoomArea(st_magazyn, sterowiec)
+setRoomCoordinates(st_magazyn, 8, 2, 0)
+
+addSpecialExit(st_magazyn,st_korytarz_3,"dziob")
+addSpecialExit(st_korytarz_3, st_magazyn, "rufa")
+addCustomLine(st_magazyn, st_korytarz_3, "dziob", "solid line", {128, 128, 128}, false)
+setRoomChar(st_magazyn,"🗄️")
+setRoomEnv(st_magazyn,295)
+
+
+-- Ciemna pracownia. (2p)
+local st_pracownia = createRoomID()
+addRoom(st_pracownia)
+setRoomArea(st_pracownia, sterowiec)
+setRoomCoordinates(st_pracownia, 8, 0, 0)
+
+addSpecialExit(st_magazyn,st_pracownia,"rufa")
+addSpecialExit(st_pracownia, st_magazyn, "dziob")
+addCustomLine(st_magazyn, st_pracownia, "rufa", "solid line", {128, 128, 128}, false)
+setRoomChar(st_pracownia,"🗄️")
+setRoomEnv(st_pracownia,295)
+
+-- Sala treningowa. (2p)
+local st_trening = createRoomID()
+addRoom(st_trening)
+setRoomArea(st_trening, sterowiec)
+setRoomCoordinates(st_trening, 10, 4, 0)
+
+addSpecialExit(st_trening, st_korytarz_3,"korytarz")
+addSpecialExit(st_korytarz_3, st_trening, "burta")
+addCustomLine(st_korytarz_3, st_trening, "burta", "solid line", {128, 128, 128}, false)
+setRoomChar(st_trening,"💪")
+
+-- Zbrojownia. (2p)
+local st_zbrojownia = createRoomID()
+addRoom(st_zbrojownia)
+setRoomArea(st_zbrojownia, sterowiec)
+setRoomCoordinates(st_zbrojownia, 10, 2, 0)
+
+addSpecialExit(st_trening, st_zbrojownia, "rufa")
+addSpecialExit(st_zbrojownia, st_trening, "dziob")
+addCustomLine(st_zbrojownia, st_trening, "dziob", "solid line", {128, 128, 128}, false)
+setRoomChar(st_zbrojownia,"⚔️")
+
+-- Wypelniony szumem maszynerii warsztat. (2p)
+local st_warsztat_2 = createRoomID()
+addRoom(st_warsztat_2)
+setRoomArea(st_warsztat_2, sterowiec)
+setRoomCoordinates(st_warsztat_2, 6, 2, 0)
+
+addSpecialExit(st_warsztat_2, st_korytarz_3, "wyjscie")
+addSpecialExit(st_korytarz_3, st_warsztat_2, "drzwi")
+addCustomLine(st_korytarz_3, st_warsztat_2, "drzwi", "solid line", {128, 128, 128}, false)
+setRoomChar(st_warsztat_2,"⚖️")
+
+
+-- Laboratorium testowania wynalazkow. (2p)
+local st_laboratorium = createRoomID()
+addRoom(st_laboratorium)
+setRoomArea(st_laboratorium, sterowiec)
+setRoomCoordinates(st_laboratorium, 6, 0, 0)
+
+addSpecialExit(st_laboratorium, st_warsztat_2, "drzwi")
+addSpecialExit(st_warsztat_2, st_laboratorium, "drzwi")
+addCustomLine(st_laboratorium, st_warsztat_2, "drzwi", "solid line", {128, 128, 128}, false)
+setRoomChar(st_laboratorium,"⚙️")
+
+-- Schludne pomieszczenie. (2p)
+local st_sklep = createRoomID()
+addRoom(st_sklep)
+setRoomArea(st_sklep, sterowiec)
+setRoomCoordinates(st_sklep, 10, 0, 0)
+
+
+
+addSpecialExit(st_sklep, st_magazyn, "wyjscie")
+addSpecialExit(st_magazyn, st_sklep, "drzwi")
+addCustomLine(st_sklep, st_magazyn, "wyjscie", "solid line", {128, 128, 128}, false)
+setRoomChar(st_sklep,"🛒")
+
+-- siedliszcze
+deleteArea("siedliszcze")
+local siedliszcze = addAreaName("siedliszcze")
+
+
+-- statki
+deleteArea("statki")
+local statki = addAreaName("statki")
+
+
+				</script>
+			<eventHandlerList />
+		</Script>
+		<Script isActive="yes" isFolder="no">
+			<name>lokalizator</name>
+			<packageName></packageName>
+			<script>function sz_getRoomID(area,room)
+at=getAreaTable()
+rooms=getAreaRooms(at[area])
+for _, id in pairs(rooms) do
+  if getRoomName(id) == room then
+    return id
+  end
+end
+return -1
+end
+
+function sz_centerView(id)
+  if id &gt; 0 then
+    amap:set_position(id,false)
+  end
+end</script>
+			<eventHandlerList />
+		</Script>
+	</ScriptPackage>
+	<TriggerPackage>
+		<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>zlok_sgw_kwatery</name>
+			<script>sz_centerView(sz_getRoomID("sterowiec","Kwatery zalogi"))</script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList>
+				<string>Ta czesc statku sprawia wrazenie zblizone do glownego placu niewielkiego miasteczka. Wszedzie wokol widac gnomy wszelkich rang i aparycji, stanowiace zaloge tego statku.</string>
+			</regexCodeList>
+			<regexCodePropertyList>
+				<integer>2</integer>
+			</regexCodePropertyList>
+		</Trigger>
+		<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="yes" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>zlok_sgw_wejscie</name>
+			<script>sz_centerView(sz_getRoomID("sterowiec","Przestronny hangar"))</script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>2</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList>
+				<string>Przestronny hangar.</string>
+				<string>Sa tutaj trzy widoczne wyjscia:</string>
+			</regexCodeList>
+			<regexCodePropertyList>
+				<integer>2</integer>
+				<integer>2</integer>
+			</regexCodePropertyList>
+		</Trigger>
+	</TriggerPackage>
 </MudletPackage>
 
