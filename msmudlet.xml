@@ -2,6 +2,13 @@
 <!DOCTYPE MudletPackage>
 <MudletPackage version="1.002">
 	<AliasPackage>
+		<Alias isActive="yes" isFolder="no">
+			<name>/buk</name>
+			<script></script>
+			<command>napij sie z buklaka</command>
+			<packageName></packageName>
+			<regex>^/buk$</regex>
+		</Alias>
 			<Alias isActive="yes" isFolder="no">
 				<name>dpl</name>
 				<script>alias_func_skrypty_inventory_bags_wdp()</script>
